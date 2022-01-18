@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{postagem.titulo}} {% endblock %}
+
+{% block body %}
+
+    <div class='card mt-2 p-2'>
+        <div class='card-title'>
+            <h3>{{postagem.titulo}}</h3>
+            <span>Criado em: {{postagem.created_at|format_datetime()}} por {{postagem.author}}</span>
+            <span class='mx-3'>Última modificação em: {{postagem.updated_at|format_datetime()}}</span>
+            <div class='mt-4 d-flex'>
+                <img src='{{asset('images/126422.png')}}' width='30' height='30'>
+                <h4 class='mx-1'>{{postagem.name}}</h4>
+            </div>
+            <span>
+                {% for tag in tags %}
+                    #{{tag}}
+                {% endfor %}
+            </span>
+            <hr>
+        </div>
+        <div class='card-body'>
+            <p>{{postagem.descricao}}</p>
+            <div class='card mt-2'>
+                <div class='card-body'>
+                    <p>{{postagem.conteudo}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

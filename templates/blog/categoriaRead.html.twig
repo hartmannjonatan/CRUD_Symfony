@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{categoria.name}} {% endblock %}
+
+{% block body %}
+
+    <div class='card mt-2 p-2'>
+        <div class='card-title'>
+            <div class='mb-2 d-flex'>
+                <img src='{{asset('images/126422.png')}}' width='50' height='50'>
+                <h3>{{categoria.name}}</h3>
+            </div>
+            <span>Criado em: {{categoria.created_at|format_datetime()}}</span>
+            <span class='mx-3'>Última modificação em: {{categoria.updated_at|format_datetime()}}</span>
+        </div>
+        <div class='card-body'>
+            {% for postagem in postagens %}
+                <div class='card my-2'>
+                    <div class='card-title d-flex justify-content-between p-3'>
+                        <div class='flex-grow-1'>
+                            <h4 class='text-uppercase'>{{ postagem.titulo }}</h4>
+                        </div>
+                        <div class='px-4'><span>By {{ postagem.author }} in {{ postagem.created_at|format_datetime() }}</span></div>
+                        <div class=''>
+                            <div class="dropdown">
+                                <button class="btn btn-success bg-pink dropdown-toggle" type='button' href="#" id="btnDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item bg-blue-light" href="postagem/update/{{ postagem.id }}">Editar Postagem</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item bg-danger" href="postagem/delete/{{ postagem.id }}">Deletar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='card-body px-3 d-flex justify-content-between'>
+                        <div><h5>{{ postagem.descricao }}</h5></div>
+                        <div>
+                            <a href="{{path('posts')}}"><button class="button-ad" type='button'>Leia Mais</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

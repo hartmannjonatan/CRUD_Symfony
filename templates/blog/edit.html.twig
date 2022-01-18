@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Editar {{type}} {% endblock %}
+
+{% block body %}
+    <h1>Editar {{type}}</h1>
+    <div class='card mt-4'>
+        <div class='card-body'>
+            {{ form_start(form) }}
+                {% if type == 'Categoria' %}
+                    {{ form_row(form.name, {
+                        label: 'Nome:'
+                    })}}
+                    {{ form_row(form.slug_text, {
+                        label: 'Slug:'
+                    })}}
+                    {{ form_row(form.save) }}
+                {% endif %}
+                {% if type == 'Postagem' %}
+                    {{ form_row(form.titulo, {
+                        label: 'Título:'
+                    })}}
+                    {{ form_row(form.author, {
+                        label: 'Autor:'
+                    })}}
+                    {{ form_row(form.slug, {
+                        label: 'Slug:'
+                    })}}
+                    {{ form_row(form.categoriaId, {
+                        label: 'Categoria:'
+                    })}}
+                    {{ form_row(form.descricao, {
+                        label: 'Descrição:'
+                    })}}
+                    {{ form_row(form.conteudo, {
+                        label: 'Conteúdo:'
+                    })}}
+                    {{ form_row(form.tag, {
+                        label: 'Digite uma ou mais tags para sua postagem:'
+                    })}}
+                    {{ form_row(form.save) }}
+                {% endif %}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

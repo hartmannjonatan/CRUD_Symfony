@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Criar {{type}} {% endblock %}
+
+{% block body %}
+    <h1>Criar nova {{type}}</h1>
+    <div class='card mt-4'>
+        <div class='card-body'>
+            {{ form_start(form) }}
+                {% if type == 'Categoria' %}
+                    {{ form_row(form.name, {
+                        label: 'Nome:',
+                        attr: {
+                            placeholder: 'Digite o nome da categoria.'
+                        }
+                    })}}
+                    {{ form_row(form.slug, {
+                        label: 'Slug:',
+                        attr: {
+                            placeholder: 'Digite um slug para essa categoria. Ele ficará no url da página, exemplo: "categoria/MeuSlug".'
+                        }
+                    })}}
+                    {{ form_row(form.save) }}
+                {% endif %}
+                {% if type == 'Postagem' %}
+                    {{ form_row(form.titulo, {
+                        label: 'Título:',
+                        attr: {
+                            placeholder: 'Digite o título de sua postagem.'
+                        }
+                    })}}
+                    {{ form_row(form.author, {
+                        label: 'Autor:',
+                        attr: {
+                            placeholder: 'Se houver, digite o nome do autor.'
+                        }
+                    })}}
+                    {{ form_row(form.slug, {
+                        label: 'Slug:',
+                        attr: {
+                            placeholder: 'Digite um slug para essa categoria. Ele ficará no url da página, exemplo: "categoria/MeuSlug".'
+                        }
+                    })}}
+                    {{ form_row(form.categoriaId, {
+                        label: 'Categoria:'
+                    })}}
+                    {{ form_row(form.descricao, {
+                        label: 'Descrição:',
+                        attr: {
+                            placeholder: 'Descreva em até 255 caracteres o conteúdo de sua postagem.',
+                            rows: '5'
+                        }
+                    })}}
+                    {{ form_row(form.conteudo, {
+                        label: 'Conteúdo:',
+                        attr: {
+                            placeholder: 'Digite o que você está pensando. :)',
+                            rows: '20'
+                        }
+                    })}}
+                    {{ form_row(form.tag, {
+                        label: 'Digite uma ou mais tags para sua postagem:',
+                        attr: {
+                            placeholder: 'Separe-as por ";". Exemplo: Programação;Python;IA'
+                        }
+                    })}}
+                    {{ form_row(form.save) }}
+                {% endif %}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block body %}
+
+    <div class='row mt-5'>
+        <div class='col-md-5 col-sm-12'> 
+            <div class='neumorphism p-3'>
+                <img class='img img-fluid' id='img-homepage' src='{{ asset('images/img-homepage.jpg') }}' alt='Estudo de Programação'>
+            </div>
+        </div>
+        <div class='col-md-7 col-sm-12 p-4'>
+            <h1 class='text-center mb-3'>Homepage</h1>
+            <h4 class='py-3'>Esse site é destinado ao estudo sobre o framework <a href='https://symfony.com/'>Symfony</a>. Com ele busco criar uma pequena estrutura de CRUD com o banco de dados mysql.</h4>
+            <h4 class='py-3 text-center'>Isso será feito atraves de <a href='https://symfony.com/doc/current/routing.html'>Routes</a>, <a href='https://symfony.com/doc/current/controller.html'>Controllers</a> e <a href='https://symfony.com/doc/current/service_container.html'>Services</a> estudados pela própria documentação.</h4>
+        </div>
+    </div>
+
+{% endblock %}

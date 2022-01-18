@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Form;
+
+use Symfony\Component\Form\AbstractType;
+use App\Entity\Categoria;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class PostagemType extends AbstractType {
+
+    public function buildForm(FormBuilderInterface $builder, array $options) : void
+    {
+        $builder
+            ->add('titulo', TextType::class)
+            ->add('author', TextType::class, [
+                'required' => false
+            ])
+            ->add('slug', TextType::class)
+            ->add('categoriaId', EntityType::class, [
+                'class' => Categoria::class,
+                'choice_label' => 'name'
+            ])
+            ->add('descricao', TextareaType::class)
+            ->add('conteudo', TextareaType::class)
+            ->add('tag', TextType::class)
+            ->add('save', SubmitType::class, ['label' => 'Criar Postagem'])
+        ;
+    }
+
+
+}

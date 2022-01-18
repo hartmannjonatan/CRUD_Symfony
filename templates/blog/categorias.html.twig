@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Categorias {% endblock %}
+
+{% block body %}
+
+    <div class='card'>
+        <div class='card-body'>
+            <div class='card-title h3 text-color-black mb-4'>Categorias</div>
+            <a href='{{ path('categoria-create') }}'><button class='button-add'>Criar nova categoria</button></a>
+        </div>
+    </div>
+
+    {% if verificador == true %}
+        {% for categoria in categorias %}
+            <div class='card my-2'>
+                <div class='card-title d-flex justify-content-between p-3'>
+                    <div class=''>
+                        <h4>{{ categoria.name }}</h4>
+                    </div>
+                    <div class=''>
+                        <div class="dropdown">
+                            <button class="btn btn-success bg-pink dropdown-toggle" type='button' href="#" id="btnDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item bg-blue-light" href="categoria/update/{{ categoria.id }}">Editar Categoria</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item bg-danger" href="categoria/delete/{{ categoria.id }}">Deletar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='card-body'>
+                    <a href="categoria/read/{{ categoria.slug }}"><button class="button-ad" type='button'>Ver postagens</button></a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+            <div class='card my-2'>
+                <div class='card-body'>
+                    <h4>Não existe nenhuma categoria, crie uma clicando no botão acima! :)</h4>
+                </div>
+            </div>
+    {% endif %}
+
+{% endblock %}

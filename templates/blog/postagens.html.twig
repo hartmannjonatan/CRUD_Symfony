@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Postagens {% endblock %}
+
+{% block body %}
+
+    <div class='card'>
+        <div class='card-body'>
+            <div class='card-title h3 text-color-black mb-4'>Postagens</div>
+            <a href='{{ path('postagem-create') }}'><button class='button-add'>Criar nova postagem</button></a>
+        </div>
+    </div>
+    {% if postagens is defined %}
+        {% for postagem in postagens %}
+            <div class='card my-2'>
+                <div class='card-title d-flex justify-content-between p-3'>
+                    <div class='flex-grow-1'>
+                        <h4 class='text-uppercase'>{{ postagem.titulo }}</h4>
+                    </div>
+                    <div class='px-4'><span>By {{ postagem.author }} in {{ postagem.created_at|format_datetime() }}</span></div>
+                    <div class=''>
+                        <div class="dropdown">
+                            <button class="btn btn-success bg-pink dropdown-toggle" type='button' href="#" id="btnDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item bg-blue-light" href="postagem/update/{{ postagem.id }}">Editar Postagem</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item bg-danger" href="postagem/delete/{{ postagem.id }}">Deletar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='card-body px-3 d-flex justify-content-between'>
+                    <div><h5>{{ postagem.descricao }}</h5></div>
+                    <div>
+                        <a href="postagem/read/{{ postagem.slug }}"><button class="button-ad" type='button'>Leia Mais</button></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% else %}
+            <div class='card my-2'>
+                <div class='card-body'>
+                    <h4>Não existe nenhuma postagem, crie uma clicando no botão acima! :)</h4>
+                </div>
+            </div>
+    {% endif %}
+
+{% endblock %}

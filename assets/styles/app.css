@@ -1,0 +1,77 @@
+:root{
+    --pink-default: #CF7055;
+    --pink-light: #e8b3a4;
+    --blue-light: rgb(164, 232, 213);
+    --font-black: #2c2c2c;
+}
+
+body {
+    background: -webkit-linear-gradient(1deg, rgb(232, 179, 164), rgb(164, 232, 213));
+    background: linear-gradient(1deg, rgb(232, 179, 164), rgb(164, 232, 213));
+}
+
+.pink-default{
+    color: var(--pink-default);
+}
+
+.pink-light{
+    color: var(--pink-light);
+}
+
+.blue-light{
+    color: var(--blue-light);
+}
+
+.bg-pink-light{
+    background-color: var(--pink-light);
+}
+
+.bg-blue-light{
+    background-color: var(--blue-light);
+}
+
+.bg-pink{
+    background-color: var(--pink-default);
+}
+
+.neumorphism{
+    border-radius: 49px;
+    background: #e8b3a4;
+    box-shadow:  21px 21px 21px #b38a7e,
+                -21px -21px 21px #ffdcca;
+}
+
+#img-homepage{
+    border-radius: 5%;
+}
+
+.button-add {
+    font-size: 18px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: radial-gradient( 100% 100% at 100% 0%, var(--pink-light) 0%, var(--pink-default) 100% );
+    box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+    padding: 0 1.5em;
+    border-radius: 0.3em;
+    color: #fff;
+    height: 2.1em;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+   }
+   
+.button-add:hover {
+    box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px var(--pink-default);
+    transform: translateY(-0.1em);
+}
+
+.button-add:active {
+    box-shadow: inset 0px 0.1em 0.6em var(--pink-default);
+    transform: translateY(0em);
+}
+
+.text-color-black{
+    color:var(--font-black) !important;
+}
